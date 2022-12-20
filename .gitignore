@@ -191,3 +191,4 @@ poetry.toml
 
 localenv/
 data/
+results/
