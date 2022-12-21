@@ -43,8 +43,20 @@ if __name__ == '__main__':
     # Plot the actual cpu times in user mode vs the ones predicted with linear regression
     fig, ax = plt.subplots()
 
-    ax.plot(b, 'k-', lw=2, label='True cpu user times')
+    ax.plot(b, 'k-', lw=2, label='% CPU time in user mode')
     ax.plot(A@x, 'b--', lw=1.5, ms=6, alpha=.8, label='Regression values')
+    ax.set(xlabel='user', ylabel='cpu user time')
+    ax.legend()
+    plt.show()
+
+    # We can also sort the cpu times and re-plot, to see if the general trend is captured
+    sort_idxs = np.argsort(b[:,0])
+    b = b[sort_idxs]
+
+    fig, ax = plt.subplots()
+
+    ax.plot(b, 'k-', lw=2, label='% CPU time in user mode')
+    ax.plot(A[sort_idxs, :]@x, 'b--', lw=1.5, ms=6, alpha=.8, label='Regression values')
     ax.set(xlabel='user', ylabel='cpu user time')
     ax.legend()
     plt.show()
