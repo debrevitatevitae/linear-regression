@@ -192,3 +192,4 @@ poetry.toml
 localenv/
 data/
 results/
+.vscode/
